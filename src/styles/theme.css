@@ -1,0 +1,173 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* Green Neon Color Palette */
+  --neon-green: #87F414;
+  --dark-green: #0A6207;
+  --darker-green: #0B340F;
+  --bg-dark: #07141A;
+  --secondary-dark: #1C3A40;
+  --olive-green: #98A86F;
+  
+  /* Theme Colors */
+  --background: #07141A;
+  --foreground: #ffffff;
+  --card: rgba(28, 58, 64, 0.3);
+  --card-foreground: #ffffff;
+  --popover: rgba(11, 52, 15, 0.95);
+  --popover-foreground: #ffffff;
+  --primary: #87F414;
+  --primary-foreground: #07141A;
+  --secondary: #1C3A40;
+  --secondary-foreground: #ffffff;
+  --muted: #98A86F;
+  --muted-foreground: rgba(255, 255, 255, 0.7);
+  --accent: #87F414;
+  --accent-foreground: #07141A;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(135, 244, 20, 0.2);
+  --input: rgba(135, 244, 20, 0.1);
+  --input-background: rgba(28, 58, 64, 0.3);
+  --switch-background: #1C3A40;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #87F414;
+  --chart-1: #87F414;
+  --chart-2: #0A6207;
+  --chart-3: #98A86F;
+  --chart-4: #1C3A40;
+  --chart-5: #0B340F;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-neon-green: var(--neon-green);
+  --color-dark-green: var(--dark-green);
+  --color-darker-green: var(--darker-green);
+  --color-bg-dark: var(--bg-dark);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-olive-green: var(--olive-green);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: #07141A;
+  }
+
+  html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(28, 58, 64, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(135, 244, 20, 0.1);
+}
+
+.glass-strong {
+  background: rgba(28, 58, 64, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(135, 244, 20, 0.2);
+}
+
+/* Neon glow effect */
+.neon-glow {
+  box-shadow: 0 0 10px rgba(135, 244, 20, 0.3),
+              0 0 20px rgba(135, 244, 20, 0.2),
+              0 0 30px rgba(135, 244, 20, 0.1);
+}
+
+.neon-glow-strong {
+  box-shadow: 0 0 20px rgba(135, 244, 20, 0.5),
+              0 0 40px rgba(135, 244, 20, 0.3),
+              0 0 60px rgba(135, 244, 20, 0.2);
+}
+
+.text-neon {
+  color: #87F414;
+  text-shadow: 0 0 10px rgba(135, 244, 20, 0.5);
+}
