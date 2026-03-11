@@ -25,7 +25,7 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-gray-400 text-sm flex items-center gap-2"
           >
-            Conçu avec <Heart className="w-4 h-4 text-[#87F414] fill-[#87F414] animate-pulse" /> et React
+            Conçu avec <Heart className="w-4 h-4 text-[#87F414] fill-[#87F414] animate-pulse" /> et Code
           </motion.p>
 
           {/* Back to top */}

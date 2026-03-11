@@ -16,8 +16,8 @@ export const projects = [
     description: 'Plateforme e-commerce moderne avec panier d\'achat, gestion des commandes et paiement en ligne.',
     technologies: ['React', 'TypeScript', 'Laravel', 'Tailwind CSS'],
     image: 'ecommerce platform modern',
-    liveDemo: 'https://demo.example.com',
-    github: 'https://github.com/example/project',
+    liveDemo: 'https://Kalan-mali.com',
+    github: 'https://github.com/ezeckiel004/kalan',
   },
   {
     id: 2,
@@ -25,8 +25,8 @@ export const projects = [
     description: 'Système de gestion complet pour les entreprises avec tableau de bord analytique.',
     technologies: ['React', 'TypeScript', 'PHP', 'MySQL'],
     image: 'business dashboard analytics',
-    liveDemo: 'https://demo.example.com',
-    github: 'https://github.com/example/project',
+    liveDemo: 'https://vibecro-app-main.vercel.app',
+    github: 'https://github.com/deboradev-rgb/vibecro-app',
   },
   {
     id: 3,
@@ -34,8 +34,8 @@ export const projects = [
     description: 'Portfolio moderne avec animations 3D et interface utilisateur futuriste.',
     technologies: ['React', 'Three.js', 'Tailwind CSS'],
     image: 'futuristic portfolio website',
-    liveDemo: 'https://demo.example.com',
-    github: 'https://github.com/example/project',
+    liveDemo: 'https://lks-portfolio-two.vercel.app',
+    github: 'https://github.com/deboradev-rgb/LKS_Portfolio',
   },
   {
     id: 4,
@@ -43,8 +43,8 @@ export const projects = [
     description: 'API RESTful complète avec authentification JWT et documentation Swagger.',
     technologies: ['Laravel', 'PHP', 'MySQL', 'JWT'],
     image: 'api development coding',
-    liveDemo: 'https://demo.example.com',
-    github: 'https://github.com/example/project',
+    liveDemo: 'https://newvibecroapi.vibecro.com/',
+    githubBackend: 'https://github.com/deboradev-rgb/vibecro-api',
   },
 ];
 
@@ -53,7 +53,7 @@ export const experiences = [
     id: 1,
     title: 'Développeuse Full Stack',
     company: 'Tech Solutions',
-    period: '2023 - Présent',
+    period: '2026 - Présent',
     description: 'Développement d\'applications web modernes avec React et Laravel. Conception et implémentation d\'API RESTful.',
     technologies: ['React', 'Laravel', 'TypeScript', 'MySQL'],
   },
@@ -61,17 +61,17 @@ export const experiences = [
     id: 2,
     title: 'Développeuse Frontend',
     company: 'Digital Agency',
-    period: '2022 - 2023',
+    period: '2022 - 2024',
     description: 'Création d\'interfaces utilisateur modernes et responsives. Optimisation des performances web.',
-    technologies: ['React', 'JavaScript', 'Tailwind CSS', 'HTML/CSS'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'HTML/CSS'],
   },
   {
     id: 3,
     title: 'Stagiaire Développeuse Web',
-    company: 'StartUp Innovante',
-    period: '2021 - 2022',
+    company: 'GROUPE VIBECRO',
+    period: '2025 - 2026',
     description: 'Participation au développement de fonctionnalités web. Apprentissage des meilleures pratiques de développement.',
-    technologies: ['PHP', 'JavaScript', 'MySQL', 'HTML/CSS'],
+    technologies: ['React', 'JavaScript', 'MySQL', 'PHP/CSS'],
   },
 ];
 
@@ -103,8 +103,8 @@ export const services = [
 ];
 
 export const socialLinks = {
-  github: 'https://github.com/deboralokossou',
+  github: 'https://github.com/deboradev-rgb',
   linkedin: 'https://linkedin.com/in/deboralokossou',
-  email: 'debora.lokossou@example.com',
-  whatsapp: 'https://wa.me/1234567890',
+  email: 'deboralokossou.dev@gmail.com',
+  whatsapp: 'https://wa.me/0150036568',
 };
