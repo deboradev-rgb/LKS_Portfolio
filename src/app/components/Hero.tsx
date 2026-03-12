@@ -1,10 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Download, Briefcase, Mail } from 'lucide-react';
 
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  // États pour l'animation du prénom
+  const [displayedFirstName, setDisplayedFirstName] = useState('');
+  const fullFirstName = "Débora Conceptia";
+  
+  // États pour l'animation du nom de famille
+  const [displayedLastName, setDisplayedLastName] = useState('');
+  const fullLastName = "LOKOSSOU";
+  
+  // États pour l'animation des titres
+  const titles = [
+    "Développeuse Full Stack",
+    "Développeuse Passionnée",
+    "Développeuse Créative",
+    "Développeuse Innovante"
+  ];
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [displayedTitle, setDisplayedTitle] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -49,23 +68,12 @@ export function Hero() {
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // Create connecting lines
-    const linesGeometry = new THREE.BufferGeometry();
-    const linesMaterial = new THREE.LineBasicMaterial({
-      color: 0x87F414,
-      transparent: true,
-      opacity: 0.1,
-    });
-
     // Animation Loop
     let animationFrameId: number;
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-
-      // Rotate particles
       particlesMesh.rotation.y += 0.0005;
       particlesMesh.rotation.x += 0.0002;
-
       renderer.render(scene, camera);
     };
 
@@ -90,6 +98,64 @@ export function Hero() {
     };
   }, []);
 
+  // Animation du prénom lettre par lettre
+  useEffect(() => {
+    if (displayedFirstName.length < fullFirstName.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedFirstName(fullFirstName.slice(0, displayedFirstName.length + 1));
+      }, 80);
+      return () => clearTimeout(timeout);
+    }
+  }, [displayedFirstName, fullFirstName]);
+
+  // Animation du nom de famille (commence après le prénom)
+  useEffect(() => {
+    if (displayedFirstName.length === fullFirstName.length) {
+      if (displayedLastName.length < fullLastName.length) {
+        const timeout = setTimeout(() => {
+          setDisplayedLastName(fullLastName.slice(0, displayedLastName.length + 1));
+        }, 80);
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, [displayedFirstName, displayedLastName, fullFirstName, fullLastName]);
+
+  // Animation des titres (typewriter avec boucle)
+  useEffect(() => {
+    // Attendre que le nom complet soit affiché avant de commencer les titres
+    if (displayedLastName.length < fullLastName.length) return;
+    
+    const currentTitle = titles[currentTitleIndex];
+    
+    if (!isDeleting) {
+      // Mode écriture
+      if (displayedTitle.length < currentTitle.length) {
+        const timeout = setTimeout(() => {
+          setDisplayedTitle(currentTitle.slice(0, displayedTitle.length + 1));
+        }, 80);
+        return () => clearTimeout(timeout);
+      } else {
+        // Une fois le titre complet, attendre 2 secondes puis effacer
+        const timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      // Mode effacement
+      if (displayedTitle.length > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayedTitle(currentTitle.slice(0, displayedTitle.length - 1));
+        }, 40);
+        return () => clearTimeout(timeout);
+      } else {
+        // Une fois effacé, passer au titre suivant
+        setIsDeleting(false);
+        setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+      }
+    }
+  }, [displayedTitle, isDeleting, currentTitleIndex, titles, displayedLastName, fullLastName]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -107,27 +173,69 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
+          
+          {/* Titre avec animation typewriter - CENTRALISÉ */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center justify-center"
           >
-            <p className="text-[#87F414] mb-4 tracking-widest uppercase text-xs sm:text-sm">
-              Développeuse Full Stack
-            </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
-              Débora Conceptia{' '}
-              <span className="text-neon block mt-2">LOKOSSOU</span>
+            <div className="h-12 mb-6 flex items-center justify-center">
+              <p className="text-[#87F414] tracking-widest uppercase text-sm sm:text-base md:text-lg font-mono">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={displayedTitle}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="inline-block"
+                  >
+                    {displayedTitle}
+                    <span className="animate-pulse ml-1 text-[#87F414]">|</span>
+                  </motion.span>
+                </AnimatePresence>
+              </p>
+            </div>
+
+            {/* Nom complet avec animation lettre par lettre - CENTRALISÉ */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-white flex flex-col items-center justify-center space-y-4">
+              {/* Prénom avec animation */}
+              <span className="block text-white">
+                {displayedFirstName}
+                {displayedFirstName.length < fullFirstName.length && (
+                  <span className="animate-pulse ml-1 text-[#87F414]">|</span>
+                )}
+              </span>
+              
+              {/* Nom de famille avec animation et effet néon */}
+              <span className="text-neon block font-mono tracking-wider text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+                {displayedLastName}
+                {displayedLastName.length < fullLastName.length && (
+                  <span className="animate-pulse ml-1 text-[#87F414]">|</span>
+                )}
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
+
+            {/* Description avec animation */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: displayedLastName.length === fullLastName.length ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4"
+            >
               Je conçois des applications web modernes, évolutives et élégantes.
-            </p>
+            </motion.p>
           </motion.div>
 
+          {/* Boutons avec apparition progressive */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            animate={{ 
+              opacity: displayedLastName.length === fullLastName.length ? 1 : 0,
+              y: displayedLastName.length === fullLastName.length ? 0 : 20 
+            }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center px-4"
           >
             <button
@@ -153,7 +261,7 @@ export function Hero() {
           {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: displayedLastName.length === fullLastName.length ? 1 : 0 }}
             transition={{ duration: 1, delay: 1 }}
             className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2"
           >
