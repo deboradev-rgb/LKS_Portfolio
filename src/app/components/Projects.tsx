@@ -8,8 +8,8 @@ import kalan1 from '../../assets/kalan1.png';
 import ajecb from '../../assets/ajecb.png';
 import vibecro from '../../assets/vibecro.PNG';
 import vibecro1 from '../../assets/vibecro1.png';
-import crea from '../../assets/crea.png';
-import crea1 from '../../assets/crea1.png';
+import crea from '../../assets/Crea.png';
+import crea1 from '../../assets/Crea1.png';
 import Borah from '../../assets/Borah.png';
 
 const projects = [
