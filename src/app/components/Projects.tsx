@@ -6,7 +6,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import kalan from '../../assets/kalan.png';
 import kalan1 from '../../assets/kalan1.png';
 import ajecb from '../../assets/ajecb.png';
-import vibecro from '../../assets/vibecro.png';
+import vibecro from '../../assets/vibecro.PNG';
 import vibecro1 from '../../assets/vibecro1.png';
 import crea from '../../assets/crea.png';
 import crea1 from '../../assets/crea1.png';
