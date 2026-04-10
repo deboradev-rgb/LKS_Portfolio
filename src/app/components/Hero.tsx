@@ -161,6 +161,17 @@ export function Hero() {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+
+  const handleDownloadCV = () => {
+  const cvUrl = '/CV_Conceptia_LOKOSSOU.pdf';  // Le / fait référence à public/
+  const link = document.createElement('a');
+  link.href = cvUrl;
+  link.download = 'CV_Conceptia_LOKOSSOU.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Three.js Canvas Background */}
@@ -224,7 +235,7 @@ export function Hero() {
               transition={{ duration: 0.5 }}
               className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4"
             >
-              Je conçois des applications web modernes, évolutives et élégantes.
+              Je conçois des sites web modernes, évolutives et élégantes.
             </motion.p>
           </motion.div>
 
@@ -252,10 +263,14 @@ export function Hero() {
               <Mail size={18} className="sm:w-5 sm:h-5" />
               Me Contacter
             </button>
-            <button className="glass px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white hover:border-[#87F414] transition-all duration-300 flex items-center justify-center gap-2 border border-[#87F414]/20 text-sm sm:text-base">
-              <Download size={18} className="sm:w-5 sm:h-5" />
-              Télécharger CV
-            </button>
+           
+<button 
+  onClick={handleDownloadCV}
+  className="glass px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white hover:border-[#87F414] transition-all duration-300 flex items-center justify-center gap-2 border border-[#87F414]/20 text-sm sm:text-base"
+>
+  <Download size={18} className="sm:w-5 sm:h-5" />
+  Télécharger CV
+</button>
           </motion.div>
 
           {/* Scroll Indicator */}

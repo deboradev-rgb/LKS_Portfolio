@@ -108,6 +108,6 @@ export const socialLinks = {
   github: 'https://github.com/deboradev-rgb',
   linkedin: 'https://linkedin.com/in/deboralokossou',
   facebook:'https://www.fb.com/l/6lp1kJRRR',
-  email: 'deboralokossou.dev@gmail.com',
+  email: 'conceptialokossou.dev@gmail.com',
   whatsapp: 'https://wa.me/0150036568',
 };

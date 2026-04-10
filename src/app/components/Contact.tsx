@@ -137,7 +137,7 @@ export function Contact() {
     {
       icon: Phone,
       label: 'WhatsApp',
-      value: '+229 XX XX XX XX',
+      value: '+229 01 50 03 65 68',
       href: socialLinks.whatsapp,
     },
     {
